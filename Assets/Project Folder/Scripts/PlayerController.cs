@@ -1,6 +1,6 @@
 using System.Collections.Specialized;
 using UnityEngine;
-using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float movementY;
 
     public float speed = 0;
-    public TextMeshProUGUI countText;
+    public TextMeshPro countText;
     public GameObject winTextObject;
 
     private int count;
@@ -32,12 +32,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnMove(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-        movementX = movementVector.x;
-        movementY = movementVector.y;
-    }
+    //void OnMove(InputValue movementValue)
+    //{
+    //    Vector2 movementVector = movementValue.Get<Vector2>();
+    //    movementX = movementVector.x;
+    //    movementY = movementVector.y;
+    //}
 
  // FixedUpdate is called once per fixed frame-rate frame.
  private void FixedUpdate() 
