@@ -4,10 +4,10 @@ public class PickUpController : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Toucher"))
+        if (other.CompareTag("Toucher"))
         {
-            Destroy(gameObject);
-            GameManager.Instance.AddPoints(1);
+            SceneReferencer.Instance.pickupSpawner.RemovePickup(this.gameObject);
+            
         }
     }
 }

@@ -10,8 +10,8 @@ public class GameManager : TXRSingleton<GameManager>
     void Start()
     {
         count = 0;
-        countText = ScenceReferncer.Instance.countText;
-        winTextObject = ScenceReferncer.Instance.winTextObject;
+        countText = SceneReferencer.Instance.countText;
+        winTextObject = SceneReferencer.Instance.winTextObject;
         SetCountText();
         winTextObject.SetActive(false);
     }
@@ -19,9 +19,10 @@ public class GameManager : TXRSingleton<GameManager>
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= ScenceReferncer.Instance.MAXPICKUPS)
+        if (count >= SceneReferencer.Instance.MAXPICKUPS)
         {
             winTextObject.SetActive(true);
+            countText.gameObject.SetActive(false);
         }
     }
 

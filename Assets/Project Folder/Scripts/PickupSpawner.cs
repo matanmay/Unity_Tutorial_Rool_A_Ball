@@ -75,4 +75,12 @@ public class PickupSpawner : MonoBehaviour
         }
         return false;
     }
+
+    // This method will remove a pickup from the list.
+    public void RemovePickup(GameObject pickupToRemove)
+    {
+        spawnPickups.Remove(pickupToRemove);
+        Destroy(pickupToRemove);
+        GameManager.Instance.AddPoints(1);
+    }
 }
