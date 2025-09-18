@@ -16,19 +16,28 @@ public class GameManager : TXRSingleton<GameManager>
         winTextObject.SetActive(false);
     }
 
+    void update()
+    {
+        if (count >= SceneReferencer.Instance.MAXPICKUPS)
+        {
+            WinGame();
+        }
+    }
+
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= SceneReferencer.Instance.MAXPICKUPS)
-        {
-            winTextObject.SetActive(true);
-            countText.gameObject.SetActive(false);
-        }
     }
 
     public void AddPoints(int points)
     {
         count += points;
         SetCountText();
+    }
+
+    private void WinGame()
+    {
+        winTextObject.SetActive(true);
+        countText.gameObject.SetActive(false);
     }
 }

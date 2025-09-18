@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Specialized;
 using UnityEngine;
 
 
@@ -24,6 +25,29 @@ public class AnalyticsLogLine : AnalyticsDataClass
 
 // Declare here new AnalyticsDataClasses for every table file output you desire.
 
+public class PickupsEvent : AnalyticsDataClass
+{
+    public string TableName => "Pickups_Event";
+    public float EventTime;
+    public string PickupName;
+    public float SpawnTime;
+    public float PickupTime;
+    public float PosX;
+    public float PosY;
+    public float PosZ;
+
+    public PickupsEvent(string name, float posX, float posY, float posZ, float spawnTime, float pickupTime)
+    {
+        EventTime = Time.time;
+        PickupName = name;
+        SpawnTime = spawnTime;
+        PickupTime = pickupTime;
+        PosX = posX;
+        PosY = posY;
+        PosZ = posZ;
+    }
+}
+
 #endregion
 
 public class TXRDataManager : TXRSingleton<TXRDataManager>
@@ -45,6 +69,8 @@ public class TXRDataManager : TXRSingleton<TXRDataManager>
     // declare pointers for all experience-specific analytics classes
     private AnalyticsLogLine logLine;
 
+    private PickupsEvent pickupsEvent;
+
     // write additional events here..
 
 
@@ -61,6 +87,12 @@ public class TXRDataManager : TXRSingleton<TXRDataManager>
 
         // tells the analytics writer to write a new line in file.
         WriteAnalyticsToFile(logLine);
+    }
+
+    public void ReportPickupEvent(string name,Vector3 pickupPosition, float spawnTime, float pickupTime)
+    {
+        pickupsEvent = new PickupsEvent(name, pickupPosition.x, pickupPosition.y, pickupPosition.z, spawnTime, pickupTime);
+        WriteAnalyticsToFile(pickupsEvent);
     }
 
     #endregion
