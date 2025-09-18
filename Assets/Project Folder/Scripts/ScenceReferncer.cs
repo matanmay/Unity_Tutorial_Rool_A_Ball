@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class ScenceReferncer : TXRSingleton<GameManager>
+public class ScenceReferncer : TXRSingleton<ScenceReferncer>
 {
     public TextMeshPro countText;
     public GameObject winTextObject;
