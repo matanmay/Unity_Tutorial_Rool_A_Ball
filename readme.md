@@ -56,11 +56,13 @@ Welcome to the VR Roll-a-Ball project! This is a virtual reality adaptation of t
 6.  Once you collect all the cubes, a "You Win!" message will appear, and the game will end.
 
 ## Scripts
-
--   `PlayerController.cs`: This script handles the movement of the ball based on the tilt of the plane. It applies forces to the ball's Rigidbody. **Note:** In this VR version, this script is simplified or replaced by the `GroundController.cs` script which controls the tilt.
--   `GroundController.cs`: **(New for VR)** This is the core of the VR control. It gets the rotation of the VR controller and applies that rotation to the `Ground` object, effectively tilting the entire play area. This creates the intuitive rolling motion.
--   `PickupController.cs`: Manages the behavior of the pickup cubes, including their rotation and the logic for their destruction upon collision with the player.
--   `GameManager.cs`: Handles game state, scorekeeping, and victory conditions. It updates the UI and checks if all pickups have been collected.
+- **`GameManager.cs`**: Manages the game's state, tracking the score and triggering the win condition.
+***
+- **`SceneReferencer.cs`**: A singleton that provides a central, easy-to-access hub for all key scene object references.
+***
+- **`PickUpController.cs`**: Attached to pickups, this script detects collisions with the player and initiates the pickup process.
+***
+- **`PickupSpawner.cs`**: Handles the spawning of pickups at random locations and manages the list of active pickups.
 
 ## Customization
 
